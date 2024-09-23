@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Demo</title>
+    <!-- CDN: Content Delivery Network -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 id="main-header">Initial text for header</h1>
+    <button id="btn-change-header">Change Header Text</button>
+    <div id=""></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        // Get DOM Elements
+        const headerEl = document.getElementById("main-header")
+        const x = document.getElementsByClassName("container")
+
+        // const btnChangeHeader = document.getElementById("btn-change-header")
+        // btnChangeHeader.addEventListener("click", changeHeader)
+
+        $("document").ready(function () {
+            // Using JQuery
+            $("#btn-change-header")
+                .on("click", changeHeader)
+                .on("mouseenter", handleMouseOver)
+                .css("background-color", "green")
+                .css("color", "coral")
+                .addClass("border")
+
+
+            $("body")
+                .append("<button>This is a new button</button>")
+                .append("<button>This is a new button</button>")
+                .append("<button>This is a new button</button>")
+
+            $("button")
+                .on("click", genericButtonHandler)
+                .css("color", "red")
+        })
+
+        function genericButtonHandler() {
+            alert("A button was clicked")
+        }
+
+        function changeHeader() {
+            headerEl.innerHTML = "New Text"
+
+            // event.target.value
+            console.log($(this))
+
+            // we can use this in JQuery to get the element that triggered the event
+            // replacing event.target.value
+        }
+        function handleMouseOver() {
+            // alert("Mouse entered the button area!")
+            console.log("Mouse entered the button area!")
+
+        }
+
+</script>
+</body>
+
+</html>
