@@ -10,7 +10,20 @@
 </head>
 
 <body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
     <h1 id="main-header">Initial text for header</h1>
+    <h2>Another header</h2>
     <button id="btn-change-header">Change Header Text</button>
     <div id=""></div>
 
@@ -41,6 +54,9 @@
             $("button")
                 .on("click", genericButtonHandler)
                 .css("color", "red")
+
+            $("#navbar ul li a")
+                .css("background-color", "pink")
         })
 
         function genericButtonHandler() {

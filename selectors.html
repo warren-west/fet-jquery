@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container1">
+        <p>One</p>
+        <p>Two</p>
+        <p>Three</p>
+        <p>Four</p>
+    </div>
+
+    <div>
+        <p>This is between container1 and 2</p>
+    </div>
+
+    <div id="container2">
+        <p>Five</p>
+        <p>Six</p>
+        <p>Seven</p>
+    </div>
+
+    <p id="eight" title="unique">Eight</p>
+    <p title="unique">Nine</p>
+    <p title="un">Ten</p>
+
+    <div>
+        <section>
+            <p title="not-unique">Eleven</p>
+            <p title="not-unique">Twelve</p>
+        </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        // Function expression (NOT HOISTED)
+        const secondHandler = function () {
+            console.log("Second")
+        }
+
+        // Arrow function (SAME AS FUNCTION EXPRESSION)
+        const thirdHandler = () => console.log("Third")
+
+        // Our JavaScript
+        $("p[title]").css("color", "blue")
+        $("p:contains(Six)").css("color", "red")
+
+        console.log("Check")
+
+        $("div")
+            .on("click", () => console.log("Fourth"))
+            .on("mouseenter", firstHandler)
+            .on("mouseleave", secondHandler)
+            .on("mousemove", thirdHandler)
+
+        $("p:first")
+            .next()
+            .css("color", "red")
+            .on("click", () => alert("clicked red"))
+            .prev()
+            .css("color", "orange")
+            .on("click", () => alert("clicked orange"))
+
+        $("#container1")
+            .nextUntil("#container2")
+            .css("background-color", "lightgreen")
+            .on("click", changeGreenToBlue)
+
+        $("#container2")
+            .children()
+            .css("background-color", "hotpink")
+
+
+        $("p")
+            .on("click", changeGreenToBlue)
+        // $("#eight").hide()
+
+        function changeGreenToBlue() {
+            $(this).css("background-color", "lightblue")
+        }
+
+        // declared function (HOISTED)
+        function firstHandler() { // This function could be moved up to the top of the script - line 41
+            console.log("First")
+        }
+
+        /* If a function is HOISTED, it means we CAN use it before we declare it. (Regular declared functions) */
+        /* If a function is NOT HOISTED, we need to declare it before using it. (Function expressions and arrow functions) */
+    </script>
+</body>
+
+</html>
